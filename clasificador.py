@@ -113,6 +113,9 @@ def classify_images():
                     history.append((directory, current_image_index))
                     break
                 elif key == 27:  # Código ASCII para la tecla Esc
+                    # Borra todas las imagenes ya clasificadas
+                    for directory, _ in history:
+                        os.remove(directory + ".png")
                     print("Saliendo del programa...")
                     return 0
                 elif key == ord("4"):  # Código para cancelar la última clasificación
@@ -138,6 +141,7 @@ def classify_images():
             cv2.destroyAllWindows()
 
         current_image_index += 1  # Avanzar a la siguiente imagen
+    
 
 if __name__ == "__main__":
     classify_images()
